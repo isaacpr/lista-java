@@ -30,12 +30,10 @@ public class Selecao extends Controle {
             } while (totalPluviometros <= 0);
 
             System.out.println("Digite o tipo do pluviômetro:");
-            List<String> tipoPluviometro = new ArrayList<>();
             List<String> pluviometros = new ArrayList<>();
             for (int i = 0; i < totalPluviometros; i++) {
                 System.out.println((i + 1) + "º Tipo: ");
-                tipoPluviometro.add(leString());
-                pluviometros.add(tipoPluviometro.get(i));
+                pluviometros.add(leString());
             }
             caminhoes.add(new Caminhao(tipo, totalPluviometros, pluviometros));
         }

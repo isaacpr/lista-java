@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96f21314-bae7-4a95-b1fe-3f340f54cd62" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lista/exercicio1/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lista/exercicio1/Pessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lista/exercicio1/PessoaPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lista/exercicio1/PessoaPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lista/exercicio2/Agenda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lista/exercicio2/Agenda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lista/exercicio3/Elevador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lista/exercicio3/Elevador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lista/exercicio3/ElevadorPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lista/exercicio3/ElevadorPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lista/exercicio5/Controle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lista/exercicio5/Controle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lista/exercicio5/Selecao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lista/exercicio5/Selecao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lista/exercicio5/SelecaoPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lista/exercicio5/SelecaoPrincipal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
