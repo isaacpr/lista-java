@@ -5,9 +5,10 @@ import java.util.List;
 
 public class SelecaoPrincipal {
     public static void main(String[] args) {
+        Selecao selecao = new Selecao();
         List<Caminhao> caminhoes = new ArrayList<>();
-        Selecao.armazenaCaminhao(caminhoes);
-        Selecao.imprimeLista(caminhoes);
-        System.out.println("Caminhão mais apto:" + Selecao.selecionaCaminhaoMaisApto(caminhoes));
+        selecao.armazenaCaminhao(caminhoes);
+        selecao.imprimeLista(caminhoes);
+        System.out.println("Caminhão mais apto:" + selecao.selecionaCaminhaoMaisApto(caminhoes));
     }
 }

@@ -1,18 +1,18 @@
 package lista.exercicio3;
 
 public class Elevador {
-    private int andarAtual = 0;
-    private int totalAndares = 0;
-    private int capacidadeElevador = 0;
-    private int quantidadePessoas = 0;
-    public static int PESOPASSAGEIRO = 75;
-
-    public int getAndarAtual() {
-        return andarAtual;
-    }
+    private int andarAtual;
+    private int totalAndares;
+    private int capacidadeElevador;
+    private int quantidadePessoas;
+    public static final int PESO_PASSAGEIRO = 75;
 
     public int getQuantidadePessoas() {
         return quantidadePessoas;
+    }
+
+    public int getAndarAtual() {
+        return andarAtual;
     }
 
     void inicializa(int capacidadeElevador, int totalAndares) {
@@ -21,32 +21,32 @@ public class Elevador {
     }
 
     void entra() {
-        if ((this.quantidadePessoas * PESOPASSAGEIRO) < this.capacidadeElevador) {
-            this.quantidadePessoas++;
+        if ((quantidadePessoas * PESO_PASSAGEIRO) < capacidadeElevador) {
+            quantidadePessoas++;
         } else {
             System.out.println("Capacidade máxima do elevador!");
         }
     }
 
     void sai() {
-        if (this.quantidadePessoas > 0) {
-            this.quantidadePessoas--;
+        if (quantidadePessoas > 0) {
+            quantidadePessoas--;
         } else {
             System.out.println("Elevador vazio!");
         }
     }
 
     void sobe() {
-        if (this.andarAtual < this.totalAndares) {
-            this.andarAtual++;
+        if (andarAtual < totalAndares) {
+            andarAtual++;
         } else {
             System.out.println("O elevador está no último andar, não é possível subir mais!");
         }
     }
 
     void desce() {
-        if (this.andarAtual > 0) {
-            this.andarAtual--;
+        if (andarAtual > 0) {
+            andarAtual--;
         } else {
             System.out.println("O elevador está no térreo, não é possível descer mais!");
         }

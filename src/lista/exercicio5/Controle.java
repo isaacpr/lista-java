@@ -1,29 +1,21 @@
 package lista.exercicio5;
 
-import java.io.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Controle {
     public static String leString() {
-        try {
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
-            return entrada.readLine();
-        } catch (IOException e) {
-            System.out.println("Erro na entrada!");
-            return "";
-        }
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 
     public static int leInteiro() {
+        Scanner scanner = new Scanner(System.in);
         try {
-            BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
-            String texto = entrada.readLine();
-            return Integer.parseInt(texto);
-        } catch (IOException e) {
-            System.out.println("Erro na entrada!");
+            return scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Não foi digitado um número inteiro!");
             return -1;
-        } catch (NumberFormatException e) {
-            System.out.println("Tipo incompativel com int!");
-            return -2;
         }
     }
 }

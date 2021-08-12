@@ -1,5 +1,6 @@
 package lista.exercicio1;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -8,42 +9,46 @@ import java.time.format.DateTimeParseException;
 public class Pessoa {
     private String nome;
     private String dataNascimento;
-    private double altura;
+    private BigDecimal altura;
 
-    public Pessoa(String nome, String dataNascimento, double altura) {
+    public Pessoa(String nome, String dataNascimento, BigDecimal altura) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.altura = altura;
     }
 
-    public String getNome() {
-        return nome;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDataNascimento() {
-        return dataNascimento;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public double getAltura() {
-        return altura;
+    public void setAltura(BigDecimal altura) {
+        this.altura = altura;
     }
 
     public void imprimeDados() {
         System.out.println("——————————————————————————————————————————————————");
-        System.out.println("Nome: " + this.getNome());
-        System.out.println("Data de nascimento: " + this.getDataNascimento());
-        System.out.println("Altura: " + this.getAltura());
+        System.out.println("Nome: " + nome);
+        System.out.println("Data de nascimento: " + dataNascimento);
+        System.out.println("Altura: " + altura);
+        System.out.println("Idade: " + calculaIdade() + " anos");
         System.out.println("——————————————————————————————————————————————————");
     }
 
-    public void calculaIdade() {
+    public int calculaIdade() {
         try {
-            DateTimeFormatter dataFormatada = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate dataInformada = LocalDate.parse(dataNascimento, dataFormatada);
             LocalDate dataAtual = LocalDate.now();
-            System.out.println("Sua idade é " + Period.between(dataInformada, dataAtual).getYears() + " anos.");
+            return Period.between(formataData(), dataAtual).getYears();
         } catch (DateTimeParseException e) {
-            System.out.println("Erro! Não foi possível calcular sua idade!");
+            throw new IllegalArgumentException(e.getMessage());
         }
+    }
+
+    public LocalDate formataData() {
+        DateTimeFormatter padraoData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LocalDate.parse(dataNascimento, padraoData);
     }
 }

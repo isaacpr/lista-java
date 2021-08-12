@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Selecao extends Controle {
-    public static void armazenaCaminhao(List<Caminhao> caminhoes) {
+    public void armazenaCaminhao(List<Caminhao> caminhoes) {
         String tipo;
         int totalPluviometros;
 
@@ -30,18 +30,18 @@ public class Selecao extends Controle {
             } while (totalPluviometros <= 0);
 
             System.out.println("Digite o tipo do pluviômetro:");
-            String[] tipoPluviometro = new String[totalPluviometros];
+            List<String> tipoPluviometro = new ArrayList<>();
             List<String> pluviometros = new ArrayList<>();
             for (int i = 0; i < totalPluviometros; i++) {
                 System.out.println((i + 1) + "º Tipo: ");
-                tipoPluviometro[i] = leString();
-                pluviometros.add(tipoPluviometro[i]);
+                tipoPluviometro.add(leString());
+                pluviometros.add(tipoPluviometro.get(i));
             }
             caminhoes.add(new Caminhao(tipo, totalPluviometros, pluviometros));
         }
     }
 
-    public static void imprimeLista(List<Caminhao> caminhoes) {
+    public void imprimeLista(List<Caminhao> caminhoes) {
         caminhoes.forEach((caminhao -> {
             System.out.println("——————————————————————————————————————————————————");
             System.out.println("Tipo do caminhão: " + caminhao.getTipo());
@@ -51,7 +51,7 @@ public class Selecao extends Controle {
         }));
     }
 
-    public static Caminhao selecionaCaminhaoMaisApto(List<Caminhao> caminhoes) {
+    public Caminhao selecionaCaminhaoMaisApto(List<Caminhao> caminhoes) {
         caminhoes.sort((Comparator.comparing(Caminhao::getTotalPluviometros)).reversed());
         return caminhoes.get(0);
     }

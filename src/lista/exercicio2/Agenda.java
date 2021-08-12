@@ -1,73 +1,62 @@
 package lista.exercicio2;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 public class Agenda {
-    private String[] nome = new String[10];
-    private int[] idade = new int[10];
-    private float[] altura = new float[10];
-    private int contador = 0;
+    private final List<Pessoa> pessoas = new ArrayList<>();
+    private static final int TAMANHO_AGENDA = 10;
 
-    void armazenaPessoa(String nome, int idade, float altura) {
-        if (contador < 10) {
-            this.nome[contador] = nome;
-            this.idade[contador] = idade;
-            this.altura[contador] = altura;
-            contador++;
-            System.out.println("Contato adicionado na agenda!");
+    public void armazenaPessoa(String nome, int idade, float altura) {
+        if (pessoas.size() < TAMANHO_AGENDA) {
+            if (buscaPessoa(nome) != -1) {
+                System.out.println("Contato já existente!");
+            } else {
+                pessoas.add(new Pessoa(nome, idade, altura));
+            }
         } else {
-            System.out.println("Agenda cheia! Inserção inválida!");
+            System.out.println("Agenda Cheia!");
         }
     }
 
-    void removePessoa(String nome) {
-        int busca = buscaPessoa(nome);
-        if (contador > 0 && busca != -1) {
-            for (int i = busca; i < contador; i++) {
-                this.nome[i] = this.nome[i + 1];
-                this.idade[i] = this.idade[i + 1];
-                this.altura[i] = this.altura[i + 1];
+    public void removePessoa(String nome) {
+        if (pessoas.size() != 0) {
+            if (buscaPessoa(nome) != -1) {
+                pessoas.remove(buscaPessoa(nome));
+            } else {
+                System.out.println("Contato não existente!");
             }
-            contador--;
-            System.out.println("Contato removido do agenda!");
-        } else if (busca == -1) {
-            System.out.println("Essa pessoa não se encontra na agenda! Remoção inválida!");
         } else {
-            System.out.println("Agenda vazia! Remoção inválida!");
+            System.out.println("Agenda Vazia!");
         }
     }
 
-    int buscaPessoa(String nome) {
-        int auxiliar = -1;
-        for (int i = 0; i < contador; i++) {
-            if (this.nome[i].equals(nome)) {
-                auxiliar = i;
-                break;
-            }
-        }
-        return auxiliar;
+    public int buscaPessoa(String nome) {
+        Optional<Pessoa> pessoaBuscada = pessoas.stream()
+                .filter(p -> p.getNome().equals(nome))
+                .findFirst();
+        return pessoaBuscada.map(pessoas::indexOf).orElse(-1);
     }
 
-    void imprimeAgenda() {
-        System.out.println("——————————————————————————————————————————————————");
-        System.out.println("Agenda completa:");
-        for (int i = 0; i < contador; i++) {
-            if (this.nome[i] != null) {
-                imprimePessoa(i);
-            }
+    public void imprimeAgenda() {
+        if (pessoas.size() == 0) {
+            System.out.println("Agenda vazia!");
+        } else {
+            System.out.println("——————————————————————————————————————————————————");
+            pessoas.forEach(pessoa -> System.out.println("Nome: " + pessoa.getNome()
+                    + " idade: " + pessoa.getIdade() + " altura: " + pessoa.getAltura()));
+            System.out.println("——————————————————————————————————————————————————");
         }
-        System.out.println("——————————————————————————————————————————————————");
     }
 
-    void imprimePessoa(int index) {
-        boolean verificador = false;
-        for (int i = 0; i < contador; i++) {
-            if (i == index && this.nome[i] != null) {
-                verificador = true;
-                System.out.println("Nome: " + this.nome[i] + " idade: " + this.idade[i] + " altura: " + this.altura[i]);
-                break;
-            }
-        }
-        if (!verificador) {
-            System.out.println("Esta pessoa não se encontra na agenda!");
+    public void imprimePessoa(int index) {
+        if (pessoas.get(index) != null) {
+            System.out.println("Nome: " + pessoas.get(index).getNome());
+            System.out.println("Idade: " + pessoas.get(index).getIdade());
+            System.out.println("Altura: " + pessoas.get(index).getAltura());
+        } else {
+            System.out.println("Contato não registrado na lista!");
         }
     }
 }
